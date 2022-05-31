@@ -282,6 +282,8 @@ private:
             throw std::runtime_error("failed to allocate vertex buffer memory!");
         }
         
+        vkBindBufferMemory(device, vertexBuffer, vertexBufferMemory, 0);
+        
         void* data;
         vkMapMemory(device, vertexBufferMemory, 0, bufferInfo.size, 0, &data);
         memcpy(data, vertices.data(), (size_t) bufferInfo.size);
